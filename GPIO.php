@@ -69,7 +69,9 @@ class GPIO{
             $this->getFlow();
     }
     public function getValue(){
-            return $this->value;
+			$value=null;
+			$value=file_get_contents("/sys/class/gpio/gpio$this->BCM_Pin/value");
+            return $value;
     }
 
     public function getBCM_Pin(){
