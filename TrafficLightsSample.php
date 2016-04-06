@@ -11,7 +11,7 @@ GPIO::clear();   //set all pins to low
 NOTE: pin numbers do not match with the phisical ones, 
 the board mode is set to BCM, check the BCM pin numbers
 to make sure you get them right.
-EDIT: BCM sheet added as .jpg, check master branch.
+EDIT: BCM sheet added as .png, check master branch.
 +++++++++++++++++++++++++++*/
 
 
