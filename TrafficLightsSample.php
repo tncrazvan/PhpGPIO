@@ -1,3 +1,4 @@
+#!/usr/bin/php
 <?php
 /*Traffic lights sample*/
 require_once './GPIO.php'; //include GPIO
