@@ -63,15 +63,13 @@ class GPIO{
             $this->setValue(0);
     }
     public function getFlow(){
-            return $this->flow;
+            return file_get_contents("/sys/class/gpio/gpio$this->BCM_Pin/direction");
     }
     public function getDirection(){
             $this->getFlow();
     }
     public function getValue(){
-			$value=null;
-			$value=file_get_contents("/sys/class/gpio/gpio$this->BCM_Pin/value");
-            return $value;
+            return file_get_contents("/sys/class/gpio/gpio$this->BCM_Pin/value");
     }
 
     public function getBCM_Pin(){
