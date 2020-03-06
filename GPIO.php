@@ -1,4 +1,6 @@
 <?php
+namespace com\github\tncrazvan\PhpGpio;
+
 class GPIO{
     public static 
             $IN="in",
@@ -8,7 +10,7 @@ class GPIO{
             $BCM_Pin;
     public function __construct($BCM_Pin,$flow=null){
             $BCM_Pin = intval($BCM_Pin);
-            shell_exec("echo \"$BCM_Pin\" >> /sys/class/gpio/export");	
+            //shell_exec("echo \"$BCM_Pin\" > /sys/class/gpio/export");	
             /*
                 Assigning pin and setting it in floating 
                 status (you can't read nor 0 or 1 from your pin at this point).
@@ -30,12 +32,12 @@ class GPIO{
             switch($flow){
                     case "in":
                     case "input":
-                            shell_exec("echo \"in\" >> /sys/class/gpio/gpio$this->BCM_Pin/direction");
+                            shell_exec("echo \"in\" > /sys/class/gpio/gpio$this->BCM_Pin/direction");
                             $this->flow = "in";
                             break;
                     case "out":
                     case "output":
-                            shell_exec("echo \"out\" >> /sys/class/gpio/gpio$this->BCM_Pin/direction");
+                            shell_exec("echo \"out\" > /sys/class/gpio/gpio$this->BCM_Pin/direction");
                             $this->flow = "out";
                             break;
                     default:
@@ -50,7 +52,7 @@ class GPIO{
     public function setValue($value){
             if(is_numeric($value)){
                     $value = intval($value);
-                    shell_exec("echo \"$value\" >> /sys/class/gpio/gpio$this->BCM_Pin/value");
+                    shell_exec("echo \"$value\" > /sys/class/gpio/gpio$this->BCM_Pin/value");
                     $this->value = $value;
             }
     }
